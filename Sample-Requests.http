@@ -1,0 +1,10 @@
+POST http://127.0.0.1:8080/api/edges
+#Authorization: Basic local-user local-pwd
+Content-Type: application/json
+
+{
+  "fromId": 1,
+  "toId": 2
+}
+
+###

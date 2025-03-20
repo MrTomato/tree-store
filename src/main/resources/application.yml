@@ -1,0 +1,21 @@
+spring:
+  application.name: tree-store
+  liquibase:
+    change-log: classpath:/db/changelog/db.changelog-master.xml
+  security:
+    user:
+      name: very-secret-prod-user
+      password: very-secret-prod-pwd1!
+#management:
+#  endpoints:
+#    jmx:
+#      exposure:
+#        exclude: "*"
+#        include: health
+#    web:
+#      exposure:
+#        exclude: "*"
+#        include: health
+
+tree-store:
+  default-max-depth: 20

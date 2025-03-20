@@ -1,0 +1,15 @@
+# management:
+#   endpoints:
+#     jmx:
+#       exposure:
+#         include: "*"
+#         exclude:
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/local
+    username: someUser
+    password: somePassword
+  security:
+    user:
+      name: local-user
+      password: local-pwd

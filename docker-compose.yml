@@ -1,0 +1,35 @@
+version: '3.8'
+
+name: tree-store
+
+services:
+  db:
+    image: postgres:latest
+    container_name: treestore_postgres_db
+    environment:
+      POSTGRES_DB: local
+      POSTGRES_USER: someUser
+      POSTGRES_PASSWORD: somePassword
+    ports:
+      - "5432:5432"
+    volumes:
+      - treestore_db_data:/var/lib/postgresql/data
+
+  backend:
+    build: .
+    platform: linux/amd64
+    container_name: treestore_backend
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:1337/local
+      SPRING_DATASOURCE_USERNAME: someUser
+      SPRING_DATASOURCE_PASSWORD: somePassword
+      spring.profiles.active: local
+      volumes:
+        -/var/run/docker.sock:/var/run/docker.sock
+
+volumes:
+  treestore_db_data:
